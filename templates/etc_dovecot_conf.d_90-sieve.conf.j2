@@ -1,9 +1,9 @@
 plugin {
   sieve = file:~/sieve;active=~/.dovecot.sieve
   sieve_before = /var/lib/dovecot/sieve/before.d
-  sieve_plugins = sieve_extprograms
+  sieve_plugins = sieve_extprograms sieve_imapsieve
   sieve_extensions = +spamtest +spamtestplus +editheader
-  sieve_global_extensions = +vnd.dovecot.execute
+  sieve_global_extensions = +vnd.dovecot.execute +vnd.dovecot.pipe +vnd.dovecot.environment
   sieve_max_redirects = {{ mail_sieve_max_redirects }}
 
   # Include the recipient in vacation replies so that DKIM applies

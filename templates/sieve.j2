@@ -1,8 +1,10 @@
-require ["fileinto","imap4flags","regex"];
-if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$", not header :contains "X-DSPAM-Reclassified" "Innocent")
-{
+require ["regex", "fileinto", "imap4flags", "mailbox", "copy"];
+# Catch mail tagged as Spam, except Spam retrained and delivered to the mailbox
+if header :contains "X-Spam" "Yes" {
+  # Mark as read
   setflag "\\Seen";
-  fileinto "Spam";
+  # Move into the Junk folder
+  fileinto :create ".Junk";
+  # Stop processing here
   stop;
 }
-

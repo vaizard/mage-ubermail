@@ -1,10 +1,10 @@
 ---
-- name: Add the apt key
+- name: Add the apt key (z-push)
   apt_key:
     url:  http://repo.z-hub.io/z-push:/final/Ubuntu_18.04/Release.key
     state: present
 
-- name: Add the repo
+- name: Add the repo (z-push)
   apt_repository:
     repo: deb http://repo.z-hub.io/z-push:/final/Ubuntu_18.04/ /
 

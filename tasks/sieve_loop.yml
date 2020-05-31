@@ -6,5 +6,5 @@
     dest: "/decrypted/{{ outer_item.domain }}/{{ outer_item.account }}/sieve/managesieve.sieve"
     owner: vmail
     group: vmail
-    force: no
+    force: yes
 

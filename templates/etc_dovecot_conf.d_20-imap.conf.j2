@@ -19,7 +19,7 @@ protocol imap {
   mail_max_userip_connections = {{ dovecot_mail_max_userip_connections }}
 
   # Space separated list of plugins to load (default is global mail_plugins).
-  mail_plugins = $mail_plugins antispam fts fts_solr
+  mail_plugins = $mail_plugins antispam fts fts_solr imap_sieve
 
   # IMAP logout format string:
   #  %i - total number of bytes read from client

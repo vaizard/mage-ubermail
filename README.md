@@ -120,11 +120,18 @@ Wanna send a PR? Wanna join as a dev/release eng.? Wanna help otherwise? Great! 
 
 - Test your (inbound mail) spamfilter with https://www.emailsecuritycheck.net/
 - Test your (outbound mail) spammyness with https://www.mail-tester.com/
+- Register on the https://www.dnswl.org/ whitelist
 - Spam lists etc. to check for:
   - https://ipremoval.sms.symantec.com/ipr/lookup (Symantec)
   - https://postmaster.verizonmedia.com/ (AOL)
   - https://sendersupport.olc.protection.outlook.com/snds/addnetwork.aspx (Outlook)
-
+- To manually train rspamd's ham/spam use
+  - `rspamc learn_ham /decrypted/example.com/user/cur/`
+  - `rspamc learn_spam /decrypted/example.com/user/.Junk/cur/`
+  Before you do so, make sure to have only spam in your `.Junk` folder and only ham in the inbox. You will probably get
+  a few errors during the training process – some of the more common ones include:
+  - `<MessageID> contains less tokens than required for bayes classifier` (the email was too short to classify)
+  - `<MessageID> has been already learned as ham, ignore it` (means exactly what it says – the email is similar enough to one already in the database)
 
 ## Similar projects
 
@@ -136,3 +143,6 @@ Ubermail is not for you? Grab a copy of
 - https://github.com/mailcow/mailcow-dockerized (https://mailcow.email/)
 - https://www.iredmail.org/
 
+Want to know about how mailstacks are put together? Look at
+
+- https://workaround.org/ispmail/buster/
